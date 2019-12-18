@@ -1,0 +1,85 @@
+<div class="content">
+    <div class="title">Distributed Income Data &nbsp;<span class="subtitle">Input Form</span></div>
+    <p>
+        <div class="panel panel-default boxshadow">
+            <div class="panel-heading">
+                <h3 class="panel-title">Distributed Income</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-sm">
+                        <label for="imCode" class="col-sm-2 control-label">IM Code</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="imCode" placeholder="IM Code" ng-model="data.imCode" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="fundCode" class="col-sm-2 control-label">Fund Code</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fundCode" placeholder="Fund Code" ng-model="data.fundCode">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="cumDate" class="col-sm-2 control-label">Cum Date</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="cumDate" placeholder="Cum Date" uib-datepicker-popup="{{format}}" ng-model="data.cumDate" is-open="popup.cumDate" datepicker-options="dateOptions" close-text="Close">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" type="button" ng-click="openPopUp('cumdate')"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="expDate" class="col-sm-2 control-label">Exp Date</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="expDate" placeholder="Exp Date" uib-datepicker-popup="{{format}}" ng-model="data.expDate" is-open="popup.expDate" datepicker-options="dateOptions" close-text="Close">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" type="button" ng-click="openPopUp('expdate')"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="distributedIncomePerUnit" class="col-sm-2 control-label">Income per Unit</label>
+                        <div class="col-sm-8">
+                            <input type="number" class="form-control" id="distributedIncomePerUnit" placeholder="Distributed Income Per Unit" ng-model="data.incomePerUnit">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="distributedIncomePolicy" class="col-sm-2 control-label">Income Policy</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="distributedIncomePolicy" ng-model="data.incomePolicy">
+                                <option value="1">Cash</option>
+                                <option value="2">Reinvestment</option>
+                                <option value="3">Optional</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="paymentDate" class="col-sm-2 control-label">Payment Date</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="paymentDate" placeholder="Payment Date" uib-datepicker-popup="{{format}}" ng-model="data.paymentDate" is-open="popup.paymentDate" datepicker-options="dateOptions" close-text="Close">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" type="button" ng-click="openPopUp('paymentdate')"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="distributedIncomeNo" class="col-sm-2 control-label">Income No.</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="distributedIncomeNo" placeholder="Distributed Income No." ng-model="data.incomeNo">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer textalign-right">
+                <button class="btn btn-default btn-sm btn-primary" type="button" ng-click="saveForm()">Save</button>
+                <button class="btn btn-default btn-sm" type="button" ng-click="cancelForm()">Cancel</button>
+            </div>
+        </div>   
+    </p>
+</div>

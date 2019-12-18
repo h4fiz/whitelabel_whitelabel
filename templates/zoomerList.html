@@ -1,0 +1,122 @@
+<div class="content">
+    <div class="title">Add/Edit Delivery List &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+            <tr>
+                <td style="width:120px;"><button type="button" class="btn btn-success" ng-click="addZoomer()"><!--Add Zoomer--> Add delivery agent</button></td>
+                <td style="padding-left:10px;"><button type="button" class="btn btn-success" ng-click="reload()">Reload </button></td>
+            </tr>
+        </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-exporter ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="ZoomerModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Add Zoomer Form</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+            <form class="form-horizontal" enctype="multipart/form-data" name="myForm" method="post">
+                <div class="form-group" ng-show="input.zoomerid != ''">
+                    <label for="fullname" class="col-sm-2 control-label"><img height="130" ng-src="{{input.image}}" alt="Photo"></label>
+                    <div class="col-sm-10">
+                        
+                        <input type="file" ngf-select ng-model="input.dataFile" accept=".jpg" name="dataFile" > 
+                        
+                    </div>
+                </div>
+                <div class="form-group" ng-show="input.zoomerid != ''">
+                    <label for="fullname" class="col-sm-2 control-label">Zoomer ID</label>
+                    <div class="col-sm-10">
+                        <!--<input type="text" class="form-control" id="fullname" placeholder="Full Name" ng-model="input.fullname" >-->
+                        <span style="font-weight:bold;color:red">{{input.zoomerid  | uppercase}}</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fullname" class="col-sm-2 control-label">Full Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="fullname" placeholder="Full Name" ng-model="input.fullname" >
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nickname" class="col-sm-2 control-label">Nick Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="nickname" placeholder="Nick Name" ng-model="input.nickname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address" class="col-sm-2 control-label">Address</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="address" placeholder="Address" ng-model="input.address">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mobile1" class="col-sm-2 control-label">Mobile 1</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="mobile1" placeholder="Mobile 1" ng-model="input.mobile1">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="mobile2" class="col-sm-2 control-label">Mobile 2</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="mobile2" placeholder="Mobile 2" ng-model="input.mobile2">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email" class="col-sm-2 control-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="email" placeholder="Email" ng-model="input.email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-sm-2 control-label">Password</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="password" placeholder="Password" ng-model="input.password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="status" class="col-sm-2 control-label">Status</label>
+                    <div class="col-sm-10">
+                        <!--<input type="text" class="form-control" id="password" placeholder="Password" ng-model="input.password">-->
+                        <select class="form-control" id="status" ng-model="input.active">
+                            <option value="Y">Active</option>
+                            <option value="N">Inactive</option>
+                        </select>  
+                    </div> 
+                </div> 
+                <div class="form-group" >
+                    <label class="col-sm-2 control-label">Vehicle Type</label>
+                    <div class="col-sm-10">
+                        <select ng-model="input.vehicles_id" ng-change="getDescription()">
+                            <option ng-repeat="vehicle in vehicles" value="{{vehicle.vehiclesid}}" >{{vehicle.vehiclesdesc}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label for="vehiclesdescription" class="col-sm-2 control-label">Vehicle Description</label>
+                    <div class="col-sm-10">
+                        <input type="text"  class="form-control" id="vehiclesdescription" placeholder="Vehicle Description" ng-model="vehiclesdescription" readonly>
+                    </div>
+                </div>
+               
+                        <input type="hidden" id="type"  ng-model="input.type">
+<!--
+                <div class="form-group">
+                    <label for="type" class="col-sm-2 control-label">Type</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" id="type" ng-model="input.type">
+                            <option ng-repeat="item in listtype" value="{{item.drivertype}}">{{item.description}}</option>
+                        </select>
+                    </div>
+                </div>
+-->
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="editForm(input.dataFile)">Submit</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

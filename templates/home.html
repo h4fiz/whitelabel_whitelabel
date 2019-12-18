@@ -1,0 +1,188 @@
+<div class="content">
+    <div class="title">Map &nbsp;<!--<span class="subtitle">Page</span>--></div>
+    <!--<div class="row paddingright-15">-->
+        <div class="col-xs-12 col-sm-9">
+            
+            <div class="map-container">
+                <div id="googleMap" class="thumbnail map-thumbnail" ng-style="{'height':getMapHeight()}"></div>
+            </div>
+            
+            <div class="filter">
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left">
+                    <!-- <img class="tick" ng-src="images/{{filter.available}}" ng-click="filterClick(0)"><img src="images/bike-motor.png"><div class="legend">Available</div> -->
+                    <img class="tick" ng-src="images/{{filter.available}}" ng-click="filterClick(0)"><img src="images/bike-blue.png"><div class="legend">Available</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left">
+                    <img class="tick" ng-src="images/{{filter.offline}}" ng-click="filterClick(1)"><img src="images/bike-black.png"><div class="legend">Offline</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left">
+                    <img class="tick" ng-src="images/{{filter.onroad}}" ng-click="filterClick(2)"><img src="images/bike-green.png"><div class="legend">On Road</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left">
+                    <img class="tick" ng-src="images/{{filter.notupdate}}" ng-click="filterClick(3)"><img src="images/bike-purple.png"><div class="legend-sm"><div>Location x<br/>available</div></div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left"><br/>
+                    <!-- <img class="tick" ng-src="images/{{filter.freelanceonline}}" ng-click="filterClick(4)"><img src="images/freelance-online.png"><div class="legend">Available</div> -->
+                    <img class="tick" ng-src="images/{{filter.freelanceonline}}" ng-click="filterClick(4)"><img src="images/car-blue.png"><div class="legend">Available</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left"><br/>
+                    <!-- <img class="tick" ng-src="images/{{filter.freelanceoffline}}" ng-click="filterClick(5)"><img src="images/freelanceoffline.png"><div class="legend">Offline</div> -->
+                    <img class="tick" ng-src="images/{{filter.freelanceoffline}}" ng-click="filterClick(5)"><img src="images/car-black.png"><div class="legend">Offline</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left"><br/>
+                    <!-- <img class="tick" ng-src="images/{{filter.freelanceonroad}}" ng-click="filterClick(6)"><img src="images/freelance-onroad.png"><div class="legend">On Road</div> -->
+                    <img class="tick" ng-src="images/{{filter.freelanceonroad}}" ng-click="filterClick(6)"><img src="images/car-green.png"><div class="legend">On Road</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left"><br/>
+                    <!-- <img class="tick" ng-src="images/{{filter.freelancenotavail}}" ng-click="filterClick(7)"><img src="images/freelance-notavailable.png"><div class="legend-sm"><div>Location x<br/>available</div></div> -->
+                    <img class="tick" ng-src="images/{{filter.freelancenotavail}}" ng-click="filterClick(7)"><img src="images/car-purple.png"><div class="legend-sm"><div>Location x<br/>available</div></div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left"><br/>
+                    <img class="tick" ng-src="images/{{filter.parttimeonline}}" ng-click="filterClick(8)"><img src="images/van-blue.png"><div class="legend">Available</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left"><br/>
+                    <img class="tick" ng-src="images/{{filter.parttimeoffline}}" ng-click="filterClick(9)"><img src="images/van-black.png"><div class="legend">Offline</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left"><br/>
+                    <img class="tick" ng-src="images/{{filter.parttimeonroad}}" ng-click="filterClick(10)"><img src="images/van-green.png"><div class="legend">On Road</div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-3 textalign-left"><br/>
+                    <img class="tick" ng-src="images/{{filter.parttimenotavail}}" ng-click="filterClick(11)"><img src="images/van-purple.png"><div class="legend-sm"><div>Location x<br/>available</div></div><br/>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-3 overflow-auto right-container" ng-style="{'height':getProfileHeight()}">
+            <div class="zoomer-profile">
+                <div class="header"><!--ZOOMER--> Delivery Agent <select ng-model="zoomer.current" ng-change="changeDriver()"><option ng-repeat="data in zoomer.list" value="{{data.n_id}}">{{data.driverid}}</option></select></div>
+                <div class="body">
+                    <table>
+                        <tr>
+                            <td style="width:40%;">
+                                <div>
+                                    <img ng-src="{{zoomer.currentData.image == undefined ? default.image : zoomer.currentData.image}}"></img>
+                                </div>
+                                <div class="title-field">Current Position</div>
+                                <div class="field-position">{{zoomer.currentData.position}}&nbsp;</div>
+                            </td>
+                            <td style="width:60%;">
+                                <div class="title-field">Status</div>
+                                <div class="field-status">{{zoomer.currentData.statusdesc}}&nbsp;</div>
+                                <div>
+                                    <table>
+                                        <tr>
+                                            <td class="col6 paddingright-5">
+                                                <div class="title-field">Delivery Agent ID</div>
+                                                <div class="field">{{zoomer.currentData.n_id}}&nbsp;</div>
+                                            </td>
+                                            <td class="col6 paddingleft-5">
+                                                <div class="title-field">App Vers.</div>
+                                                <div class="field">{{zoomer.currentData.version}}&nbsp;</div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="title-field">Full Name</div>
+                                <div class="field">{{zoomer.currentData.fullname}}&nbsp;</div>
+                                <div class="title-field">Nickname</div>
+                                <div class="field">{{zoomer.currentData.nickname}}&nbsp;</div>
+                                <div class="title-field">Personal Phone No.</div>
+                                <div class="field">{{zoomer.currentData.mobilepersonal}}&nbsp;</div>
+                                <div class="title-field">Company Phone No.</div>
+                                <div class="field">{{zoomer.currentData.mobilework}}&nbsp;</div>
+                                <div class="title-field">Last Update</div>
+                                <div class="field">{{zoomer.currentData.lastactive}}&nbsp;</div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="task">
+                <div class="header">TASK STATUS</div>
+                <div class="body">
+                    <div class="title-field">Vendor</div>
+                    <div class="field">{{zoomer.orderData.partnerName}}&nbsp;</div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td class="col5 paddingright-5">
+                                    <div class="title-field">Delivery Status</div>
+                                    <div class="field" ng-class="{'field-active':deliveryStatus.ontheway, 'field-nonactive':!deliveryStatus.ontheway}">On The Way</div>
+                                </td>
+                                <td class="col3 paddingright-5">
+                                    <div class="title-field">&nbsp;</div>
+                                    <div class="field" ng-class="{'field-active':deliveryStatus.pickup, 'field-nonactive':!deliveryStatus.pickup}">Pickup</div>
+                                </td>
+                                <td class="col4 ">
+                                    <div class="title-field">&nbsp;</div>
+                                    <div class="field" ng-class="{'field-active':deliveryStatus.delivered, 'field-nonactive':!deliveryStatus.delivered}">Delivered</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="pickup">
+                <div class="header">PICK UP DETAILS</div>
+                <div class="body">
+                    <div class="title-field">Name</div>
+                    <div class="field">{{ zoomer.orderData.pickupName }}&nbsp;</div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td class="col6 paddingright-5">
+                                    <div class="title-field">Contact No</div>
+                                    <div class="field">{{ zoomer.orderData.pickupPhone }}&nbsp;</div>
+                                </td>
+                                <td class="col6 textalign-right paddingright-10">
+                                    <div class="title-field width-full">Order List <img src="images/order-list.png" ng-click="openOrderList(zoomer.orderData.zoomorderid)"></img></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="title-field">Pick Up Address</div>
+                    <div class="field">{{ zoomer.orderData.pickupAddress }}&nbsp;</div>
+                </div>
+            </div>
+            <div class="delivery">
+                <div class="header">DELIVERY DETAILS</div>
+                <div class="body">
+                    <div class="title-field">Name</div>
+                    <div class="field">{{zoomer.orderData.deliveryName}}&nbsp;</div>
+                    <div>
+                        <table>
+                            <tr>
+                                <td class="col6 paddingright-5">
+                                    <div class="title-field">Contact No</div>
+                                    <div class="field">{{zoomer.orderData.deliveryPhone}}&nbsp;</div>
+                                </td>
+                                <td class="col6 textalign-right paddingright-10">
+                                    <div class="title-field-small width-full">Delivery Instruction <img src="images/order-list.png" uib-popover="{{zoomer.orderData.deliveryInstruction}}" popover-trigger="mouseenter" popover-placement="top-right"></img></div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="title-field">Pick Up Address</div>
+                    <div class="field">{{zoomer.orderData.deliveryAddress}}&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    <!--</div>-->
+</div>
+<script type="text/ng-template" id="HomeOrderListModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Order List</h3>
+    </div>
+    <div class="modal-body">
+        <!--<ul>
+            <li ng-repeat="item in items">
+                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+            </li>
+        </ul>
+        Selected: <b>{{ selected.item }}</b>-->
+        <div id="gridDetailOrdersOnline" ui-grid="gridDetailOrdersOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning style="height:250px;"></div>
+    </div>
+    <div class="modal-footer">
+        <!--<button class="btn btn-primary" type="button" ng-click="ok()">OK</button>-->
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    </div>
+</script>

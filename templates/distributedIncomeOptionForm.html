@@ -1,0 +1,45 @@
+<div class="content">
+    <div class="title">Distributed Income Option &nbsp;<span class="subtitle">Input Form</span></div>
+    <p>
+        <div class="panel panel-default boxshadow">
+            <div class="panel-heading">
+                <h3 class="panel-title">Distributed Income Option</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-sm">
+                        <label for="saCode" class="col-sm-2 control-label">SA Code</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="saCode" placeholder="SA Code" ng-model="data.saCode" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="fundCode" class="col-sm-2 control-label">Fund Code</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="fundCode" placeholder="Fund Code" ng-model="data.fundCode">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="investorFundUnitNo" class="col-sm-2 control-label">Fund Unit A/C No.</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="investorFundUnitNo" placeholder="Investor Fund Unit A/C No." ng-model="data.investorFundUnitNo">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="incomeOption" class="col-sm-2 control-label">Income Option</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="incomeOption" ng-model="data.incomeOption">
+                                <option value="1">Cash</option>
+                                <option value="2">Reinvestment</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="panel-footer textalign-right">
+                <button class="btn btn-default btn-sm btn-primary" type="button" ng-click="saveForm()">Save</button>
+                <button class="btn btn-default btn-sm" type="button" ng-click="cancelForm()">Cancel</button>
+            </div>
+        </div>   
+    </p>
+</div>

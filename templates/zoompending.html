@@ -1,0 +1,102 @@
+<div class="content">
+    <div class="title">Zoom Partner Pending&nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">		
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="editContent.html">
+    <div class="modal-header">
+            <h4 class="modal-title">Detail Info ( {{data.ip}} / {{data.registertime}} )</h4>
+        </div>
+        <div class="modal-body">
+            <table style="width:100%;padding:10px;">
+                <tr>
+					<td style="width:250px;">CONTACT NAME</td>
+					<td>{{data.contact_name}}</td>
+                </tr>
+				<tr>
+					<td >CONTACT NUMBER</td>
+					<td>{{data.contact_mobile}}</td>
+                </tr>
+				<tr>
+					<td >CONTACT EMAIL</td>
+					<td>{{data.contact_email}}</td>
+                </tr>
+				<tr>
+					<td >FINANCE EMAIL</td>
+					<td>{{data.finance_email}}</td>
+                </tr>
+				<tr>
+					<td >ALTERNATE CONTACT NAME</td>
+					<td>{{data.alt_contact}}</td>
+                </tr>
+				<tr>
+					<td >ALTERNATE CONTACT NUMBER</td>
+					<td>{{data.alt_mobile}}</td>
+                </tr>
+				<tr>
+					<td >BUSINESS NAME</td>
+					<td>{{data.business_name}}</td>
+                </tr>
+				<tr>
+					<td >REGISTERED COMPANY NAME</td>
+					<td>{{data.registered_company}}</td>
+                </tr>
+				<tr>
+					<td >COMPANY ADDRESS</td>
+					<td>{{data.business_address}}</td>
+                </tr>
+				<tr>
+					<td >DELIVERY ITEM DETAILS</td>
+					<td>{{data.item_detail}}</td>
+                </tr>
+				<tr>
+					<td >BANK ACCOUNT NAME</td>
+					<td>{{data.bank_accname}}</td>
+                </tr>
+				<tr>
+					<td >BANK ACCOUNT No</td>
+					<td>{{data.bank_acc}}</td>
+                </tr>
+				<tr>
+					<td >BANK NAME</td>
+					<td>{{data.bank_name}}</td>
+                </tr>
+				<tr>
+					<td >Login</td>
+					<td><input type="text" style="width:200px;" ng-model="data.loginid" maxlength="16"></td>
+                </tr>
+				<tr>
+					<td >Password</td>
+					<td><input type="text" style="width:200px;" ng-model="data.loginpass" maxlength="16"></td>
+                </tr>
+				<tr>
+					<td>Billing Type</td>
+					<td>
+						<select name="repeatSelect" id="repeatSelect" ng-model="data.billingtype">
+							<option ng-repeat="option in billing" value="{{option.billingid}}">{{option.label}}</option>
+						</select> <br/>{{billing[data.billingtype-1].description}}
+					</td>
+                </tr>
+            </table>
+			</br>
+			<h4>Pickup Point</h4>
+			<table style="width:100%;padding:10px;">
+				<tr>
+					<th style="width:15%;">Contact</th>
+					<th style="width:15%;">Phone</th>
+					<th>Address</th>
+				</tr>
+				<tr ng-repeat="x in dataPickup">
+					<td style="padding-left:5px;padding-right:5px;">{{x.contact}}</td>
+					<td style="padding-left:5px;padding-right:5px;">{{x.telp}}</td> 
+					<td style="padding-left:5px;padding-right:5px;">{{x.address}}</td> 
+				</tr>	
+			</table>
+			
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="accept()">Accept</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Reject</button>
+        </div>
+</script>

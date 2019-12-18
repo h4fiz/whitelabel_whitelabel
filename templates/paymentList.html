@@ -1,0 +1,21 @@
+<div class="content">
+    <div class="title">Payment List &nbsp;<!--<span class="subtitle">Know more about Us</span>-->
+	</div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-right:10px; width:100%; ">
+            <button type="button" class="btn btn-success float-right" ng-click="getOrderList()">Refresh</button>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="qr.html">
+    <div class="modal-header">
+        <h3 class="modal-title">PackageID {{id}}</h3>
+    </div>
+    <div class="modal-body">
+		<center>
+       <div id="qrcode_id" style="width:100px; height:100px; margin-top:15px;"></div> 
+	   </center>
+    </div>
+	</br>
+</script>

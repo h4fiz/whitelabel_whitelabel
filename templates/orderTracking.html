@@ -1,0 +1,89 @@
+<div class="content">
+<style>
+	table {
+		border-collapse: collapse;
+	}
+	tr:nth-child(even) {background:  #7771f2}
+	tr:nth-child(odd) {background: #FFF}
+</style>
+    <div class="title">Order Tracking</div>
+	<input type="text" placeholder="Tracking ID" autocomplete="off" ng-model="id"> <button class="btn btn-primary" type="button" ng-click="search()">Search</button></br>
+	<table style="width:100	%;">
+		<tr>
+			<td style="padding:5px;">TrackingId</td>
+			<td style="padding:5px;">{{data.trackingid}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">OrderId</td>
+			<td style="padding:5px;">{{data.orderid}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">GroupId</td>
+			<td style="padding:5px;">{{data.rootid}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Submited date</td>
+			<td style="padding:5px;">{{data.submited}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Pickup timestamp</td>
+			<td style="padding:5px;">{{data.pickup}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Delivered timestamp</td>
+			<td style="padding:5px;">{{data.delivered}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Vendor</td>
+			<td style="padding:5px;">{{data.partner}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Delivery Name</td>
+			<td style="padding:5px;">{{data.deliveryname}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Delivery Address</td>
+			<td style="padding:5px;">{{data.deliveryaddress}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Delivery Address Detail</td>
+			<td style="padding:5px;">{{data.addressdetail}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Delivery Instruction</td>
+			<td style="padding:5px;">{{data.instruction}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">C.O.D</td>
+			<td style="padding:5px;">{{data.cod}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Status</td>
+			<td style="padding:5px;">{{data.status}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Driver</td>
+			<td style="padding:5px;">{{data.driverid}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Notes1</td>
+			<td style="padding:5px;">{{data.notes1}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Notes2</td>
+			<td style="padding:5px;">{{data.notes2}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Notes3</td>
+			<td style="padding:5px;">{{data.notes3}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Weight</td>
+			<td style="padding:5px;">{{data.weight}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Qty</td>
+			<td style="padding:5px;">{{data.qty}}</td>
+		</tr>
+	</table>
+</div>

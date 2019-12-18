@@ -1,0 +1,54 @@
+<div class="content">
+    <div class="title">Unsuccess Order  &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-right:10px; width:100%; ">
+            <button class="btn btn-success" ng-click="getOrderList()">Refresh</button> &nbsp; Total : ( {{info.total}} / {{gridOptions.data.length}} ) group order(s) 
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+<!-- =======SCRIPT MODAL ======= -->
+<script type="text/ng-template" id="DeliveredManualModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Delivered Order Manual</h3>
+    </div>
+    <div class="modal-body">
+		<table>
+			<tr>
+				<td>OrderId</td>
+				<td>{{orderId}}</td>
+			</tr>
+			<tr>
+				<td>Vendor</td>
+				<td>{{partnerName}}</td>
+			</tr>
+			<tr>
+				<td>Delivery Name</td>
+				<td>{{deliveryName}}</td>
+			</tr>
+			<tr>
+				<td>Delivery Address</td>
+				<td>{{deliveryAddress}}</td>
+			</tr>
+			<tr>
+				<td>Driver</td>
+				<td>{{drivers}}</td>
+			</tr>
+			<tr>
+				<td>Date</td>
+				<td>
+					<p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepicker.requestDate" is-open="datepicker.isOpen" datepicker-options="datepicker.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+				</td>
+			</tr>
+		</table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

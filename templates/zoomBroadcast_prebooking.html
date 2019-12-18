@@ -1,0 +1,46 @@
+<div class="content">
+    <div class="title">Zoomer Pre-Booking Request&nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">            
+		<table style="margin-right:10px;" >
+		<tr>
+			<td>Date </td>
+			<td>
+				<p class="input-group" style="margin-bottom:0px;">
+					<input type="text" class="form-control" uib-datepicker-popup ng-model="datepickerStart.requestDate" is-open="datepickerStart.isOpen" datepicker-options="datepickerStart.options" close-text="Close" readonly />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default" ng-click="openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+				</p>
+			</td>
+		</tr>
+		<tr>
+			<td>Number of Zoomer </td>
+			<td>
+			 <input type="number" ng-model="Data.NoZoomer" placeholder="Number of Zoomer"  >
+			</td>
+		</tr>
+		<tr>
+			<td>Type of Zoomer </td>
+			<td>
+			<select name="repeatSelect" id="repeatSelect" ng-model="Data.Type">
+			  <option ng-repeat="option in TypeofZoomer" value="{{option.id}}">{{option.desc}}</option>
+			</select>
+			</td>
+		</tr>
+		<tr>
+			<td>Timeout </td>
+			<td>
+			 <input type="number" ng-model="Data.Timeout" placeholder="Timeout (minute)"  > (minute)
+			</td>
+		</tr>
+		<tr>
+			<td> &nbsp;</td>
+		</tr>
+		<tr>
+			<td colspan="2"><button type="button" class="btn btn-success" ng-click="sendBroadcast()">Broadcast</button> <button type="button" class="btn btn-success" ng-click="getBroadcastList()">Refresh</button></td>
+		</tr>
+		</table>		
+		<div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px', 'margin-top':'10px'}"></div>
+        </div>
+</div>

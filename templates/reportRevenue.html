@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="title">Zoomer Revenue Report&nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+                <tr>
+					<td style="padding-left:px; width:160px;">
+						<p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepicker.requestDate" is-open="datepicker.isOpen" datepicker-options="datepicker.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>                        
+                    </td>
+					<td style="width:20px;padding-left:5px;"> To </td>
+                    <td style="padding-left:10px; width:160px;">
+                        <p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepicker2.requestDate" is-open="datepicker2.isOpen" datepicker-options="datepicker2.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open2()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>
+                    </td>
+		   <td style="padding:5px; width:200px;"> <input type="password" ng-model="secret.key" placeholder="Key Please"> </td>
+                    <td style="padding-left:10px; width:100px;"><button type="button" class="btn btn-primary" ng-click="reloadOrder()">Reload</button></td>
+                    <!-- <td style="padding-left:10px;">Total Delivery : {{info.total}}</td> -->
+                    <td style="padding-left:10px;">Avg Delivery per zoomer : {{(gridApi.grid.columns[1].getAggregationValue())/gridApi.grid.columns[0].getAggregationValue() | number :2  }}</td>
+                    <!-- <td style="padding-left:10px;">Avg Delivery : {{(gridApi.grid.columns[1].getAggregationValue()+gridApi.grid.columns[2].getAggregationValue())/gridApi.grid.columns[0].getAggregationValue() | number :2  }}</td> -->
+                </tr>
+            </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ui-grid-exporter ng-style="{'height': getHeight()+'px'}">
+            <div class="watermark" ng-show="!gridOptions.data.length && !info.onloading">No data available</div>
+        	<div class="watermark" ng-show="info.onloading"><img src="images/495.gif"></div>
+        </div>
+    </div>
+</div>

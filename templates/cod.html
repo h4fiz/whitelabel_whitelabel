@@ -1,0 +1,89 @@
+<div class="content">
+    <div class="title">C.O.D &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+                <tr>
+                    <td>
+                        <span>Zoomer :</span> &nbsp; &nbsp;<span>
+                        <select class="form-control" style="width:200px; display:inline;" ng-model="header.zoomer" ng-change="getListTransaction()" >
+                            <option value="" selected disabled>Choose Zoomer</option>    
+                            <option ng-repeat="item in data.listDriver" value="{{item.n_id}}">{{item.driverid}}</option>
+                        </select></span> &nbsp; 
+                        <input type="password" ng-model="secret.key" placeholder="Key Please"></td>
+                </tr>
+            </table>
+        </div>
+        <div style="font-weight:bold;">Pending COD per Date</div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="DetailCodModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Partner Login Form</h3>
+        </div>
+        <div class="modal-body">
+            <div >
+                <span>
+                    <select class="form-control" ng-model="dataParam.zoomerid" style="width:200px;" disabled >
+                            <option value="" selected disabled>Choose Zoomer</option>    
+                            <option ng-repeat="item in dataParam.listDriver" value="{{item.n_id}}">{{item.driverid}}</option>
+                    </select>
+                </span>
+            </div>
+            <div style="margin-top:5px;" class="col">
+                <p class="input-group" style="width:200px;">
+                <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="data.chooseDate" is-open="popup1.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" disabled />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+                </p>
+            </div>
+            <div id="gridDetail" ui-grid="gridDetailOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-grouping style="height:300px;" ></div>
+            <table style="width:100%;margin-top:10px;">
+                <tr>
+                    <td style="text-align:right;">Total Cod Amount : &nbsp;</td>
+                    <td style="width:200px;"><input type="text" class="form-control" step="0.01" min="0" ng-model="dataParam.cod" readonly></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">Total Zoom Cod Amount : &nbsp;</td>
+                    <td style="width:200px;"><input type="text" class="form-control" step="0.01" min="0" ng-model="dataParam.actual_cod" readonly></td>
+                </tr>
+                <tr>
+                    <td style="text-align:right;">Total Reported Amount : &nbsp;</td>
+                    <td style="width:200px;"><input type="number" class="form-control" step="0.01" min="0" ng-model="dataParam.reported_cod" ng-keydown="validateInput($event)"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="PartnerLoginResetPasswordModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Reset Password Form</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="loginId" class="col-sm-2 control-label">Login ID</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="loginId" placeholder="Login ID" ng-model="input.loginId" readonly >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="password" placeholder="Password" ng-model="input.password">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>

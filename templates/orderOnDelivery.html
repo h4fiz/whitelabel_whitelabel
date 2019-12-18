@@ -1,0 +1,28 @@
+<div class="content">
+    <div class="title">Order On Delivery &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-right:10px; width:100%; ">
+            <button class="btn btn-success" ng-click="getOrderList()">Refresh</button> &nbsp; Total : ( {{info.total}} / {{gridOptions.data.length}} ) group order(s) 
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="insertPasword.html">
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-title">Are you sure want to cancel All?</h4>
+    </div>
+
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            Insert Password
+            <input type="Password" ng-model="dataed.Password"  id="Password" class="form-control"
+                name="Password" placeholder="Insert Password Here" required>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="cancelOrder()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

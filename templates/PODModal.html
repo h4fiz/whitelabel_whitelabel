@@ -1,0 +1,50 @@
+<div class="content">
+<style>
+	table {
+		border-collapse: collapse;
+	}
+	tr:nth-child(even) {background:  #868686}
+	tr:nth-child(odd) {background: #FFF}
+</style>
+    <div class="title">Proof of Delivery</div>
+   
+	<table style="width:100	%;">
+		<tr>
+			<td style="padding:5px;">OrderId</td>
+			<td style="padding:5px;">{{data.orderid}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Receiver Name</td>
+			<td style="padding:5px;">{{data.name}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Delivery Address</td>
+			<td style="padding:5px;">{{data.address}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Delivery Phone</td>
+			<td style="padding:5px;">{{data.phone}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Delivery Timestamp</td>
+			<td style="padding:5px;">{{data.timestamp}}</td>
+		</tr>		
+		<tr>
+			<td style="padding:5px;">Driverid</td>
+			<td style="padding:5px;">{{data.driverid}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Signature Note</td>
+			<td style="padding:5px;">{{data.signaturenotes}}</td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Picture</td>
+			<td style="padding:5px;"> <img ng-src="http://{{data.pic}}" ></td>
+		</tr>
+		<tr>
+			<td style="padding:5px;">Signature</td>
+			<td style="padding:5px;"> <img ng-src="http://{{data.signature}}" ></td>
+		</tr>		
+	</table>
+    
+</div>

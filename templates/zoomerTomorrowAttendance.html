@@ -1,0 +1,71 @@
+<div class="content">
+    <div class="title">Zoomer Attendance &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+                <tr>
+                    <td>Filter Date : </td>
+                    <td style="padding-left:10px;">
+                        <p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepicker.requestDate" is-open="datepicker.isOpen" datepicker-options="datepicker.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>
+                    </td>
+                    <td style="padding-left:10px;"><button type="button" class="btn btn-primary" ng-click="refresh()">Reload</button> <button type="button" class="btn btn-success" ng-click="close()">Confirm</button></td>
+                    <td style="padding-left:10px;"> Yes : {{info.yes}}, No : {{info.no}}, Total : {{info.total}}</td>
+                </tr>
+            </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ui-grid-exporter ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="attendanceSetActualModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Set Actual Attendance</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="zoomer" class="col-sm-2 control-label">Driver</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="zoomer" placeholder="Driver" ng-model="data.driver">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fordate" class="col-sm-2 control-label">For Date</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="fordate" placeholder="For Date" ng-model="data.fordate">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="answer" class="col-sm-2 control-label">Answer</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="answer" placeholder="No Answer" ng-model="data.answer">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="actual" class="col-sm-2 control-label">Actual</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-model="input.actual">
+                            <option value='Y'>Yes</option>
+                            <option value='N'>No</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" >
+                    <label for="remark" class="col-sm-2 control-label">Remark</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="remark" placeholder="Remark" ng-model="input.remark">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>

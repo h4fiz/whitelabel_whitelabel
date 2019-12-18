@@ -1,0 +1,35 @@
+<div class="content">
+    <div class="title">Zoomer Rating &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+                <tr>
+                    <td style="width:100px;">From Date : </td>
+                    <td style="padding-left:10px; width:200px;">
+                        <p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepickerFrom.requestDate" is-open="datepickerFrom.isOpen" datepicker-options="datepickerFrom.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openFrom()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>
+                    </td>
+                    <td style="width:20px;">&nbsp;</td>
+                    <td style="width:100px;">To Date : </td>
+                    <td style="padding-left:10px; width:200px;">
+                        <p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepickerTo.requestDate" is-open="datepickerTo.isOpen" datepicker-options="datepickerTo.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openTo()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>
+                    </td>
+                    <td style="padding-left:10px; width:100px;"><button type="button" class="btn btn-primary" ng-click="getRating()">Reload</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-exporter ui-grid-pinning ng-style="{'height': getHeight()+'px'}">
+            <div class="watermark" ng-show="!gridOptions.data.length && !info.onloading">No data available</div>
+        	<!--<div class="watermark" ng-show="info.onloading"><img src="images/495.gif"></div>-->
+        </div>
+    </div>
+</div>

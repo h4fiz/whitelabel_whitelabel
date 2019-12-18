@@ -1,0 +1,61 @@
+<div class="web-navcol" ng-class="{'navcol-show':isMenuShow}">
+    <ul class="navigation">
+        <li role="presentation" ng-click="toogleMenuCol()"><a ui-sref="home"><img src="images/icon-home.png"></img> Home</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="dashboard">Dashboard</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="orderlist">Order List</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="orderreservation">Order Reservation</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="preassignment">Pre-assignment Order</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="suspiciousorder">Suspicious Order</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="orderondelivery">Order on Delivery</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="orderunsuccessful">Unsuccessful Order</a></li>
+		<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="ordersla">SLA order</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="orderpreschedule">Preshceduled Orders</a></li>
+        <!--<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="orderdetail">Order Details</a></li>-->
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="pickupanddeliverytime">Pickup & Delivery Time</a></li>
+        <!-- <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="grouporder">Group Orders</a></li> -->
+        <!-- <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="grouporderplus">Group Orders+</a></li> -->
+		<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="autogrouporder">Auto Group Orders</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="orderhistory">Order History</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="orderunsuccessfulhistory">Unsuccessful History</a></li>
+		<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="tracking">Order Tracking</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoombroadcast">Broadcast</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoombroadcasthistory">Broadcast History</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoomitregistrationlist">ZoomIt Pending Reg.</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="paymentList">Payment List</a></li>
+        <!--<li role="presentation" ng-click="toogleMenuCol()"><a ui-sref="about">About</a></li>-->
+        <!-- Setting MENU -->
+        <li role="presentation" ng-click="toogleMenuCol()"><a ui-sref="zoompartner"><img src="images/icon-setting.png"></img> Setting</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoompartnerpending">Zoom Pending Partner</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoompartner">Zoom Partner</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoompartnerlogin">Zoom Partner Login</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoomerlist">Zoomer Full-Timer</a></li>
+		<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoomerparttime">Zoomer Part-Timer</a></li>
+		<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoomerfreelance">Zoomer Freelancer</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoomerrating">Zoomer Rating</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoomertomorrowattendance">Zoomer Attendance</a></li>
+        <!--<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoombroadcast">Zoomer Pre-booking</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="zoombroadcasthistory">Zoomer Pre-booking History</a></li>-->
+        <!-- Report MENU -->
+        <li role="presentation" ng-click="toogleMenuCol()"><a ui-sref="reportorder"><img src="images/icon-report.png"></img> Report</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="reportorder">Order Report</a></li>
+		<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="reportstatus">Partner Summary Report</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="report1to3days">1-3 Days Summary Report</a></li>		
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="reportSummaryMarketplace">Marketplace Summary Report</a></li>       																															
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="reportlogin">Zoomer Login Report</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="reportdeliveryzoomer">Delivery Zoomer / Day Report</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="reportrevenue">Zoomer Revenue Report</a></li>
+        <li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="reportincentive">Zoomer Incentive Report</a></li>
+		<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="acceptanceList">Consignment Consolidation</a></li>
+		<li role="presentation" ng-click="toogleMenuCol()" class="small"><a ui-sref="historyacceptanceList">Consignment Consolidation History</a></li>
+        <!-- Report MENU -->
+        <li role="presentation" ng-click="toogleMenuCol()"><a ui-sref="cod"><img src="images/icon-cod.png"></img> C.O.D</a></li>
+        <!-- Report MENU -->
+        <li role="presentation" ng-click="toogleMenuCol()"><a href="logout.php"><img src="images/icon-logout.png"></img> Logout</a></li>
+    </ul>
+    <!--<hr class="separator-navigation"/>
+    <ul class="navigation">
+      <li role="presentation" ng-click="toogleMenuCol()"><a ui-sref="home">Logout</a></li>
+    </ul>-->
+</div>
+<div class="overlay" ng-show="isMenuShow" ng-click="toogleMenuCol()"></div>
+

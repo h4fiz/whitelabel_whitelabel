@@ -1,0 +1,59 @@
+<div class="content">
+    <div class="title">Zoom Access Control&nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+            <tr>
+                <td style="width:120px;"><button type="button" class="btn btn-success" ng-click="addPartner()">Add User</button></td>
+                <td style="padding-left:10px;"><button type="button" class="btn btn-success" ng-click="reload()">Reload </button></td>
+            </tr>
+        </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="AccessModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Access Form</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="partner" class="col-sm-2 control-label">User</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="partner" placeholder="User" ng-model="input.user" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact" class="col-sm-2 control-label">Password</label>
+                        <div class="col-sm-10">
+                            <input type="password" class="form-control" id="contact" placeholder="Password" ng-model="input.password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile" class="col-sm-2 control-label">Active</label>
+                        <div class="col-sm-10">
+                             <select ng-model="input.active"">
+                                <option value="Y" >Active</option>
+                                <option value="N" >Inactive</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile" class="col-sm-2 control-label">Access List</label>
+                        <div class="col-sm-10">
+				<div ng-repeat="item in menunav">
+					<input type="checkbox" id="Menu_{{$index}}"  ng-checked="checkedMenu(item)" ng-click="menuClick(item,$index)" ng-model="access[$index]" ><label> {{item.menu}}</label></br>
+				</div>
+			</div>
+		    </div>
+					
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>

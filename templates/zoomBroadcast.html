@@ -1,0 +1,115 @@
+<div class="content">
+    <div class="title">ZOOM Broadcast</div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">            
+		<table style="width:98%;margin-right:10px;" >
+		<tr>
+			<td style="width:60px;">Date </td>
+			<td style="width:200px;">
+				<p class="input-group" style="margin-bottom:0px;">
+					<input type="text" class="form-control" uib-datepicker-popup ng-model="datepickerStart.requestDate" is-open="datepickerStart.isOpen" datepicker-options="datepickerStart.options" close-text="Close" readonly />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default" ng-click="openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+				</p>
+			</td>
+			<td style="padding-left:10px;">
+				<button type="button" class="btn btn-success" ng-click="getBroadcastList()">Refresh</button>
+				<button type="button" class="btn btn-success" ng-click="sendBroadcast()">Broadcast Selected</button>
+			</td>
+		</tr>
+		</table>		
+		<div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-selection ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px', 'margin-top':'10px'}"></div>
+        </div>
+</div>
+<script type="text/ng-template" id="BroadcastDetail.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Broadcast Detail</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+			<table>
+				<tr>
+					<td width="140px;">Timestamp</td>
+					<td >
+						{{data.timestamp}}
+					</td>
+				</tr>
+				<tr>
+					<td >For Date</td>
+					<td >
+						{{data.date}}
+					</td>
+				</tr>
+				<tr>
+					<td>Type of Zoomer </td>
+					<td>
+						{{data.type}}
+					</td>
+				</tr>
+			</table>
+        </div>
+        <div id="gridresultdetail" ui-grid="gridResultOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':'300px', 'margin-top':'10px'}"></div>
+        </div>
+    </div>
+    <div class="modal-footer">            
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    </div>
+</script>
+<script type="text/ng-template" id="SendBroadcastModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Broadcast</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+			<table>
+				<tr>
+					<td >For Date :</td>
+					<td >
+						<p class="input-group" style="margin-bottom:0px;">
+							<input type="text" class="form-control" uib-datepicker-popup ng-model="datepickerStart.requestDate" is-open="datepickerStart.isOpen" datepicker-options="datepickerStart.options" close-text="Close" readonly />
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-default" ng-click="openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
+							</span>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td>Type of Zoomer </td>
+					<td>
+						<select name="repeatSelect" id="repeatSelect" ng-model="data.type">
+						  <option ng-repeat="option in types" value="{{option.id}}">{{option.desc}}</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>Type of Vehicle </td>
+					<td>
+						<select name="vehicleSelect" id="vehicleSelect" ng-model="data.vehicle">
+							<option value="0">- ALL -</option>
+						  <option ng-repeat="option in vehicles" value="{{option.id}}">{{option.desc}}</option>
+						</select>
+					</td>
+				</tr>
+			</table>
+        </div>
+		<!--
+        <div id="griddetail" ui-grid="gridDetailOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':'300px', 'margin-top':'10px'}"></div>
+        </div>
+		-->
+    </div>
+    <div class="modal-footer">            
+        <button class="btn btn-primary" type="button" ng-click="send()">Broadcast</button> <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+    </div>
+</script>
+<script type="text/ng-template" id="qr.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Broadcastid {{id}}</h3>
+    </div>
+    <div class="modal-body">
+		<center>
+       <div id="qrcode_id" style="width:100px; height:100px; margin-top:15px;"></div> 
+	   </center>
+    </div>
+	</br>
+</script>

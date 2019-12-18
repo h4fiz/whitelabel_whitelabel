@@ -1,0 +1,11 @@
+<div class="content" ng-init="init()">
+    <div class="title">Distributed Income Data &nbsp;<span class="subtitle">List View</span></div>
+    <p>
+        <div class="btn-group btn-group-sm">
+          <button type="button" class="btn btn-primary" ng-click="addNew()">Add New</button>
+        </div>
+        <div id="grid" ui-grid="gridOptions" class="grid margin-top5 height500" ui-grid-resize-columns ui-grid-auto-resize>
+            <div class="watermark" ng-show="!gridOptions.data.length">No Data Available</div>
+        </div>
+    </p>
+</div>

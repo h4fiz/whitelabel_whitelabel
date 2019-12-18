@@ -1,0 +1,15 @@
+<div class="content">
+    <div class="title">SLA Order &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+                <tr>
+                    <td style="padding-left:5px;"><button type="button" class="btn btn-primary" ng-click="reloadOrder()">Reload</button></td>
+					<td style="padding-left:5px;">Total : {{data.total}}, 0(D)={{data.day0}}, 1(D)={{data.day1}}, 2(D)={{data.day2}}, 3(D)={{data.day3}}, -(D)={{data.dayX}} </td>
+                    <!-- <td style="padding-left:10px;">Total : ( {{info.total}} / {{gridOptions.data.length}} ) group order(s) | Total COD : RM {{info.cod}} | Zoomer Collected : RM {{info.collected}}</td> -->
+                </tr>
+            </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-exporter ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>

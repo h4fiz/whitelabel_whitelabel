@@ -1,0 +1,143 @@
+<div class="content">
+    <div class="title">Individual Investor KYC Input/Amendment Data &nbsp;<span class="subtitle">Input Form</span></div>
+    <p>
+        <div class="panel panel-default boxshadow">
+            <div class="panel-heading">
+                <h3 class="panel-title">Individual Data</h3>
+            </div>
+            <div class="panel-body">
+                <form class="form-horizontal">
+                    <div class="form-group form-group-sm">
+                        <label for="type" class="col-sm-2 control-label">Type</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="type" ng-model="data.type">
+                                <option value="1">Input</option>
+                                <option value="2">Amendment</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="saCode" class="col-sm-2 control-label">SA Code</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="saCode" placeholder="SA Code" ng-model="data.saCode">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="sid" class="col-sm-2 control-label">SID</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="sid" placeholder="SID" ng-model="data.sid">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="firstname" class="col-sm-2 control-label">Firstname</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="firstname" placeholder="Firstname" ng-model="data.firstname">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="middlename" class="col-sm-2 control-label">Middlename</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="middlename" placeholder="middlename" ng-model="data.middlename">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="lastname" class="col-sm-2 control-label">Lastname</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="lastname" placeholder="Lastname" ng-model="data.lastname">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="country" class="col-sm-2 control-label">Country of Nationality</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="country" placeholder="Country of Nationality" ng-model="data.country">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="idNo" class="col-sm-2 control-label">ID No.</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="idNo" placeholder="ID No." ng-model="data.idNo">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="idExpDate" class="col-sm-2 control-label">ID Expiration Date</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="idExpDate" placeholder="ID Expiration Date" uib-datepicker-popup="{{format}}" ng-model="data.idExpDate" is-open="popup.idExpDate" datepicker-options="dateOptions" close-text="Close">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" type="button" ng-click="openPopUp('idexpdate')"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="npwpNo" class="col-sm-2 control-label">NPWP No.</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="npwpNo" placeholder="NPWP No." ng-model="data.npwpNo">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="npwpRegistrationDate" class="col-sm-2 control-label">NPWP Registration Date</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="npwpRegistrationDate" placeholder="NPWP Registration Date" uib-datepicker-popup="{{format}}" ng-model="data.npwpRegistrationDate" is-open="popup.npwpRegistrationDate" datepicker-options="dateOptions" close-text="Close">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" type="button" ng-click="openPopUp('npwpregistrationdate')"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="countryOfBirth" class="col-sm-2 control-label">Country of Birth</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="countryOfBirth" placeholder="Country of Birth" ng-model="data.countryOfBirth">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="PlaceOfBirth" class="col-sm-2 control-label">Place of Birth</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" id="placeOfBirth" placeholder="Place of Birth" ng-model="data.placeOfBirth">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="dateOfBirth" class="col-sm-2 control-label">Date of Birth</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="dateOfBirth" placeholder="Date of Birth" uib-datepicker-popup="{{format}}" ng-model="data.dateOfBirth" is-open="popup.dateOfBirth" datepicker-options="dateOptions" close-text="Close">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default btn-sm" type="button" ng-click="openPopUp('dateofbirth')"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="gender" class="col-sm-2 control-label">Gender</label>
+                        <div class="col-sm-8">
+                            <label class="radio-inline"><input type="radio" name="gender" value="1" ng-model="data.gender">Male</label>
+                            <label class="radio-inline"><input type="radio" name="gender" value="2" ng-model="data.gender">Female</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label for="educationalBackground" class="col-sm-2 control-label">Educational Background</label>
+                        <div class="col-sm-8">
+                            <select class="form-control" id="educationalBackground" ng-model="data.educationalBackground">
+                                <option value="1">Primary School</option>
+                                <option value="2">Junior High School</option>
+                                <option value="3">Senior High School</option>
+                                <option value="4">Diploma</option>
+                                <option value="5">Undergraduate</option>
+                                <option value="6">Post Graduate</option>
+                                <option value="7">Doctoral Program</option>
+                                <option value="8">Others</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="panel-footer textalign-right">
+                <button class="btn btn-default btn-sm btn-primary" type="button" ng-click="saveForm()">Save</button>
+                <button class="btn btn-default btn-sm" type="button" ng-click="cancelForm()">Cancel</button>
+            </div>
+        </div>   
+    </p>
+</div>

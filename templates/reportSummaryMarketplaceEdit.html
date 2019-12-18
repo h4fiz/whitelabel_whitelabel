@@ -1,0 +1,52 @@
+<div class="content">
+<h4>Report Market Place Edit Form</h4> 
+
+<div class="col-md-12">
+    <label> Id marketplace</label>
+    <input type="text" ng-model="data.id_market" class="form-control" readonly>
+</div>
+<div class="col-md-12">
+    <label>Date:</label>
+  <input type="text" ng-model="data.date" class="form-control"  readonly>
+	</div>
+	<div class="col-md-12">
+	 partner id
+	<input type="text" ng-model="data.partnername" class="form-control" readonly>
+    </div>
+    <div class="col-md-12"> 
+       Driver Id
+       <input type="text" ng-model="data.zoomer" class="form-control" readonly>
+       </div> 
+       <div class="col-md-12">
+      Total Parcel 
+       <input type="text" ng-model="data.totalparcel" class="form-control">
+       </div>
+       <div class="col-md-12">
+        Parcel Delivery
+       <input type="text" ng-model="data.totalparceldelivered" class="form-control">
+       </div> 
+       <div class="col-md-12">
+            Total COD
+       <input type="text" ng-model="data.totalcod" class="form-control">
+       </div> 
+       <div class="col-md-12">
+            COD Collected
+       <input type="text" ng-model="data.totalcodneedtocollect" class="form-control">
+       </div> 
+       <div class="col-md-12">
+            Total Cancel By Sms
+       <input type="text" ng-model="data.totalcancel" class="form-control">
+       </div> 
+       <div class="col-md-12">
+            Total Reveneue
+       <input type="text" ng-model="data.totalrevenue" class="form-control" readonly>
+       </div> 
+       <div class="col-md-12">
+            Total Reveneue COD
+       <input type="text" ng-model="data.revenuecod" class="form-control" readonly>
+       </div> 
+	        <div class="form-section-footer">
+                <button type="button" class="btn btn-primary btn-sm" ng-click="save()">Save</button>
+                <button type="button" class="btn btn-default btn-sm" ng-click="cancel()">Cancel</button>
+            </div>	  
+        </div>

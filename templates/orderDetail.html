@@ -1,0 +1,18 @@
+<div class="content">
+    <div class="title">Order Detail &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+            <tr>
+                <td style="width:100px;">Order ID : </td>
+                <td style="padding-left:10px; width:200px;">
+                    <input type="text" class="form-control" ng-model="data.rootid" />
+                </td>
+                <td style="padding-left:10px;"><button type="button" class="btn btn-primary" ng-click="reloadOrder()">Reload</button></td>
+                <!--<td style="padding-left:10px;"><button type="button" class="btn btn-primary" ng-click="cancelOrder()">Cancel </button></td>-->
+            </tr>
+        </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>

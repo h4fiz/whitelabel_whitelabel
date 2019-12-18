@@ -1,0 +1,112 @@
+<div class="content">
+    <div class="title">Task Assigment</div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+		<div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; "> 
+				<!-- <input type="text" ng-model="input.vehicle" class="form-control" id="revisedHscode" name="revisedHscode"
+				placeholder="" required>            -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="col-md-5">
+							<div class="row form-group">
+								<div class="col-md-4 col-sm-4">
+									Partner Name : 
+								</div>
+								<div class="col-md-2 col-sm-8">
+									<select ng-model="input.partnername" class="form-control" style="width: 300px">
+										<option value="" disabled="disabled">- Select Partner -</option>
+										<option ng-repeat="item in PartnerName" value="{{item.n_partnerid}}">{{item.n_id}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-4 col-sm-4">
+									Vehicle : 
+								</div>
+								<div class="col-md-2 col-sm-8">
+									<select ng-model="input.vehicle" class="form-control" style="width: 300px">
+											<option value="" disabled="disabled">- Select Vehicle -</option>
+											<option ng-repeat="item in vehicle" value="{{item.id}}">{{item.desc}}</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-5">
+							<div class="row form-group">
+								<div class="col-md-4 col-sm-4">
+									Delivery Agent : 
+								</div>
+								<div class="col-md-2 col-sm-8">
+									<select ng-model="input.zoomer" class="form-control" style="width: 300px">
+										<option value="" disabled="disabled">- Select Driver -</option>
+										<option ng-repeat="item in driver | filter:{typeVehicle:input.vehicle}" value="{{item.n_id}}">{{item.driverid}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-4 col-sm-4">
+									Barcode :
+								</div>
+								<div class="col-md-2 col-sm-8">
+									<input class="form-control" style="width: 300px" type="text" ng-model="input.barcode" id="inputbarcode" ng-keypress="checkKey($event)"/>					
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="row form-group">
+								<div class="col-md-3 col-sm-4">
+									&nbsp;
+								</div>
+								<div class="col-md-3 col-sm-8">
+									&nbsp;
+								</div>
+							</div>
+							<div class="row form-group">
+								<div class="col-md-12 col-sm-12" style="margin-top:12px">
+										<button type="button" class="btn btn-success" ng-click="addBarcode()">Add</button>
+										<button type="button" class="btn btn-primary" ng-click="submitBarcode()">Submit All</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+		<!-- <table style="width:100%;margin-right:10px;" >
+			<tr>
+				<td style="width:90px;">Partner Name : </td>
+				<td style="width:200px;">
+					<select ng-model="input.partnername" class="form-control" style="width: 400px">
+						<option value="" disabled="disabled">- Select Partner -</option>
+						<option ng-repeat="item in PartnerName" value="{{item.n_partnerid}}">{{item.n_id}}</option>
+					</select>
+				</td>
+
+				<td style="width:90px;">Delivery Agent : </td>
+				<td style="width:200px;">
+					<select ng-model="input.zoomer">
+						<option value="" disabled="disabled">- Select Driver -</option>
+						<option ng-repeat="item in driver | filter:{typeVehicle:input.vehicle}" value="{{item.n_id}}">{{item.driverid}}</option>
+					</select>
+				</td>
+				
+			</tr>
+			<tr>
+				<td style="width:90px;">Vehicle : </td>
+				<td style="width:200px;">
+					<select ng-model="input.vehicle">
+						<option value="" disabled="disabled">- Select Vehicle -</option>
+						<option ng-repeat="item in vehicle" value="{{item.id}}">{{item.desc}}</option>
+					</select>
+				</td>
+				<td style="width:90px;">Barcode : </td>
+				<td style="width:200px;">
+					<input type="text" ng-model="input.barcode" id="inputbarcode" ng-keypress="checkKey($event)"/>
+				</td>
+				<td style="padding-left:10px;">
+					<button type="button" class="btn btn-success" ng-click="addBarcode()">Add</button>
+					<button type="button" class="btn btn-primary" ng-click="submitBarcode()">Submit All</button>
+				</td>
+			</tr>
+		</table>		 -->
+		<div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-selection ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px', 'margin-top':'10px'}"></div>
+		</div>
+</div>

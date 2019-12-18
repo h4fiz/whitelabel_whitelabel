@@ -1,0 +1,161 @@
+<div class="content">
+    <div class="title">Zoom Partner &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+            <tr>
+                <td style="width:120px;"><button type="button" class="btn btn-success" ng-click="addPartner()">Add Partner</button></td>
+                <td style="padding-left:10px;"><button type="button" class="btn btn-success" ng-click="reload()">Reload </button></td>
+            </tr>
+        </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>
+<script type="text/ng-template" id="PartnerModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Partner Form</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="partner" class="col-sm-2 control-label">Partner</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="partner" placeholder="partner" ng-model="input.partner" >
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact" class="col-sm-2 control-label">Contact Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="contact" placeholder="Contact Name" ng-model="input.contact">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile" class="col-sm-2 control-label">Mobile</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="mobile" placeholder="Mobile" ng-model="input.mobile">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="col-sm-2 control-label">Email</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="email" placeholder="Email" ng-model="input.email">
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="address" class="col-sm-2 control-label">Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="address" placeholder="Address" ng-model="input.address" style="width:90%; display:inline;" readonly>&nbsp;<button type="button" ng-click="openMapModal(input)">...</button>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="instruction" class="col-sm-2 control-label">Address Info</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="instruction" placeholder="Address Info" ng-model="input.addressInfo">
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="input.id > 0" >
+                        <label for="address" class="col-sm-2 control-label">Outlet Address</label>
+                        <div class="col-sm-10">
+                            <button type="button" class="btn btn-primary" ng-click="openAddessModal()">Show Detail</button>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="maxOrderGroup" class="col-sm-2 control-label">Max Order Group</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="maxOrderGroup" placeholder="Max Order Group" ng-model="input.maxOrderGroup">
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="maxDistanceGroup" class="col-sm-2 control-label">Max Distance Group</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="maxDistanceGroup" placeholder="Max Distance Group" ng-model="input.maxDistanceGroup">
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="basicCharge" class="col-sm-2 control-label">Basic Charge</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="basicCharge" placeholder="Basic Charge" ng-model="input.basicCharge">
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="serviceCharge" class="col-sm-2 control-label">Service Charge</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="serviceCharge" placeholder="Service Charge" ng-model="input.serviceCharge">
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="billingType" class="col-sm-2 control-label">Billing Type</label>
+                        <div class="col-sm-10">
+                            <select ng-model="input.billingType" ng-change="changeDescription()">
+                                <option ng-repeat="item in billing" value="{{item.billingid}}" >{{item.label}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" >
+                        <label for="billingDescription" class="col-sm-2 control-label">Billing Description</label>
+                        <div class="col-sm-10">
+                            <input type="text"  class="form-control" id="billingDescription" placeholder="Billing Description" ng-model="billingdescription" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+    <script type="text/ng-template" id="PartnerAddressModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Partner Address Form</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="partner" class="col-sm-2 control-label">Partner : </label>
+                        <div class="col-sm-10">
+                            {{dataPartnerAddress.partner}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="col-sm-2 control-label">Address : </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="address" placeholder="Address" ng-model="inputAddress.address" style="width:90%; display:inline;" readonly>&nbsp;<button type="button" class="btn btn-default btn-sm" ng-click="openMapAddressModal(inputAddress)">...</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact" class="col-sm-2 control-label">Contact : </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="contact" placeholder="Contact Person" ng-model="inputAddress.contact"> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="telp" class="col-sm-2 control-label">Telp : </label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="telp" placeholder="Telephone Number" ng-model="inputAddress.telp">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label">&nbsp;</label>
+                        <div class="col-sm-10">
+                            <button type="button" class="btn btn-primary btn-sm" ng-click="addAddress(inputAddress)">Add</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-12">
+                            <div style="padding-left:10px; padding-right:10px;">
+                            <div id="gridAddress" ui-grid="gridAddressOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ></div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <!--<button class="btn btn-primary" type="button" ng-click="submit()">Submit</button>-->
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Close</button>
+        </div>
+    </script>

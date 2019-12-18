@@ -1,0 +1,32 @@
+<div class="content">
+    <div class="title">Partner Summary Report&nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table >
+                <tr>
+                    <td>Begin : </td>
+                    <td style="padding-left:10px;">
+                        <p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepickerStart.requestDate" is-open="datepickerStart.isOpen" datepicker-options="datepickerStart.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openStart()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>
+                    </td>
+                    <td>&nbsp; End : </td>
+                    <td style="padding-left:20px;">
+                        <p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepickerEnd.requestDate" is-open="datepickerEnd.isOpen" datepicker-options="datepickerEnd.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="openEnd()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                        </p>
+                    </td>
+                    
+                    <td style="padding-left:10px;"><button type="button" class="btn btn-primary" ng-click="reloadOrder()">Reload</button></td>
+                </tr>
+            </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ui-grid-exporter ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>

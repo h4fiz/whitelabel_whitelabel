@@ -1,0 +1,28 @@
+<div class="content">
+    <div class="title">Auto Group Order&nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-left:10px; ">
+            <table width="100%">
+                <tr>
+					<td style="text-align:left; padding-left:5px;">Type 
+					<select  ng-model="OptType">
+					  <option ng-repeat="option in OptTypeList" value="{{option.typeid}}">{{option.description}}</option>
+					</select>
+					</td>
+					<td style="text-align:left; padding-left:5px;" ng-show="enableMerge">Grouped Order 
+					<select  ng-model="groupid">
+					  <option ng-repeat="option in groupedList" value="{{option.groupid}}">{{option.groupid}} ({{option.partner}})</option>
+					</select>
+					</td>
+                    <td style="text-align:right; padding-right:20px;">
+						<button class="btn btn-info" ng-click="selectall()">Select ALL</button>
+						<button class="btn btn-success" ng-show="enableMerge" ng-click="merge()">Merge Selected</button>																			  
+						<button class="btn btn-success" ng-click="groupSelected()">Group Selected</button>
+                        <button class="btn btn-success" ng-click="getList()">Reload</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ui-grid-tree-view ng-style="{'height': getHeight()+'px'}"></div>
+    </div>
+</div>

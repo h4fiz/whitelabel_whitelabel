@@ -1,0 +1,85 @@
+<div class="content">
+    <div class="title">Order Unsuccessful  &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0">
+        <!-- <div style="height:39px;padding-top:2px; padding-bottom:2px;padding-right:10px; width:100%; ">
+            <button class="btn btn-success" ng-click="getOrderList()">Refresh</button> &nbsp; Total : {{gridOptions.data.length}} order(s) 
+        </div> -->
+        <div>
+            <button class="btn btn-warning" ng-click="cancelAll()">Cancel All</button> <button class="btn btn-success" ng-click="getOrderList()">Refresh</button> &nbsp; Total : {{gridOptions.data.length}} order(s) 
+        </div>
+        <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px', 'margin-top':'10px'}"></div>
+        <!-- <div id="grid1" ui-grid="gridOptions" class="grid" ui-grid-resize-columns ui-grid-selection ui-grid-auto-resize ui-grid-pinning ng-style="{'height': getHeight()+'px', 'margin-top':'10px'}"></div> -->
+    </div>
+</div>
+<!-- =======SCRIPT MODAL ======= -->
+<script type="text/ng-template" id="DeliveredManualModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Delivered Order Manual</h3>
+    </div>
+    <div class="modal-body">
+		<table>
+			<tr>
+				<td>OrderId</td>
+				<td>{{orderId}}</td>
+			</tr>
+			<tr>
+				<td>Vendor</td>
+				<td>{{partnerName}}</td>
+			</tr>
+			<tr>
+				<td>Delivery Name</td>
+				<td>{{deliveryName}}</td>
+			</tr>
+			<tr>
+				<td>Delivery Address</td>
+				<td>{{deliveryAddress}}</td>
+			</tr>
+			<tr>
+				<td>Driver</td>
+				<td><select class="form-control" ng-options="item as item.driverid for item in drivers track by item.n_id" ng-model="input.assignTo"></select></td>
+			</tr>
+			<tr>
+				<td>Date</td>
+				<td>
+					<p class="input-group" style="margin-bottom:0px;">
+                        <input type="text" class="form-control" uib-datepicker-popup ng-model="datepicker.requestDate" is-open="datepicker.isOpen" datepicker-options="datepicker.options" close-text="Close" readonly />
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </p>
+				</td>
+			</tr>
+		</table>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Save</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
+<script type="text/ng-template" id="UnsuccessfulEditModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Edit Order {{typeEdit}}</h3>
+        </div>
+        <div class="modal-body">
+            <div>
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label for="address" class="col-sm-2 control-label">{{typeEdit}} Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="address" placeholder="Address" ng-model="input.address" style="width:90%; display:inline;" readonly>&nbsp;<button type="button" ng-click="openMapModal(input)">...</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="addressPhone" class="col-sm-2 control-label">{{typeEdit}} Phone</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="addressPhone" placeholder="Phone" ng-model="input.phone">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="doEdit()">Submit</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>

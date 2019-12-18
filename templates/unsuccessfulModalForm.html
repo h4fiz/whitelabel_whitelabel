@@ -1,0 +1,33 @@
+<div class="content">
+	<div class="title" style="padding-left:10px;"> Unsuccessful Order </div>
+        <div class="modal-body">
+		<table style="width:100%;">
+			<tr>
+				<td style="padding:5px;width:30%;">OrderId</td>
+				<td>{{Orderid}}</td>
+			</tr>
+			<tr>
+				<td style="padding:5px;width:30%;">Delivery Name</td>
+				<td>{{DeliveryName}}</td>
+			</tr>
+			<tr>
+				<td style="padding:5px;width:30%;">Delivery Address</td>
+				<td>{{DeliveryAddress}}</td>
+			</tr>
+			<tr>
+				<td style="padding:5px;width:30%;">Remarks</td>
+				<td>
+					<select ng-model="selectReason" style="margin-bottom:5px;" >
+						<option ng-repeat="item in reasonList" value="{{item.reason}}">{{item.reason}}</option>
+						<option value="Others">Others</option>
+					</select>
+					<textarea rows="4" cols="40" ng-model="notes" ></textarea>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="modal-footer">
+        	<button class="btn btn-primary" type="button" ng-click="ok()">Submit</button>
+        	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    	</div>
+</div>

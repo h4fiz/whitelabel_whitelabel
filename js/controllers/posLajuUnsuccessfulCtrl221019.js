@@ -1,0 +1,230 @@
+angular.module('app')
+.controller('posLajuUnsuccessfulCtrl', ['$state', '$scope', '$timeout', '$interval', '$http', '$uibModal', '$q', '$rootScope', '$window', '$location',  function($state, $scope, $timeout, $interval, $http, $uibModal, $q, $rootScope, $window, $location){
+
+    /*----------*//*-----VARIABLES-----*//*----------*/
+    $scope.orders = [];
+    $scope.listAllDriver=[];
+    
+    $scope.info = {
+        total:0,
+    }
+    
+    /*----------*//*-----SETTING-----*//*----------*/    
+    $scope.gridOptions = {
+        data : $scope.orders,
+        onRegisterApi :function(gridApi){
+            $scope.gridApi = gridApi;
+        },
+
+        enableRowSelection: true,
+        enableSelectAll: true,
+        multiSelect: true,
+        enableSorting: true,
+        enableGridMenu: true,
+        enableFiltering: true,
+        enableColumnResizing: true,
+        exporterPdfTableStyle: {margin: [10, 10, 10, 5]},
+        exporterPdfOrientation: 'landscape',
+        columnDefs:[
+            { field: 'zoomorderid', displayName : 'ID', width:100, pinnedLeft:true  }, //cellTemplate:'<div class="ui-grid-cell-contents"><button class="btn btn-primary btn-xs" ng-click="grid.appScope.openDetailOrderModal(row.entity.zoomorderid)">+</button>&nbsp;&nbsp;{{ row.entity.zoomorderid }}</div>'
+            { field: 'unsuccessfultime' , displayName:'Unsuccessful Datetime', width:160,  pinnedLeft:true },
+            { field: 'status' , displayName:'Status', width:100,  pinnedRight:true },
+            { field: 'reason' , displayName:'Reason', width:200 },
+            { field: 'remark' , displayName:'Remark', width:300 },
+            { field: 'partnername' , displayName:'Vendor', width:150 },
+            /*{ field: 'Delivery_Shift', displayName:'Delivery Shift', width:150},*/
+            { field: 'Pickup_Address' , displayName:'Pickup Address', width:400 },
+            { field: 'Delivery_Instruction', displayName:'Delivery Instruction', width:400
+                /*filter: {
+                    term: '',
+                    type: uiGridConstants.filter.SELECT,
+                    selectOptions: [ { value: true, label: 'true' }, { value: false, label: 'false' } ]
+                }*/
+            },
+            { field: 'Delivery_Address', displayName : 'Delivery Address', width:400 },
+            { field: 'Pickup_Name' , displayName:'Pickup Name', width:150 },
+            { field: 'Delivery_Name', displayName : 'Receiver Name', width:150 },
+            { field: 'Delivery_Phone', displayName:'Delivery Phone', width:150},
+                        
+            { field: 'driver', displayName:'Driver', width:80, pinnedRight:true  },
+            /*{ name: 'actions', enableFiltering:false, field:'Ticketid', width:200, pinnedRight:true, 
+                cellTemplate:'<button class="btn btn-success btn-sm" ng-click="grid.appScope.openEdit(row.entity, \'Delivery\')">Edit</button> <button class="btn btn-primary btn-sm" ng-click="grid.appScope.doConfirm(row.entity)">Confirm</button> <button class="btn btn-warning btn-sm" ng-click="grid.appScope.doManual(row.entity)">Manual</button>'}*/
+            { name: 'actions', enableFiltering:false, field:'Ticketid', width:200, pinnedRight:true, 
+                cellTemplate:'<button class="btn btn-warning btn-sm" ng-click="grid.appScope.edit(row.entity)">Cancel</button>'}
+        ],
+    };
+
+    /*----------*//*-----FUNCTION-----*//*----------*/
+    $scope.getDriver = function()
+    {
+        $http.get('http://18.141.18.7/controlpanel/getDriverFullAndFreelancer.php')        
+        .success(function(respone) 
+        {
+            respone = CRYPTO.decrypt(respone.data);
+            $scope.listAllDriver = respone.records;
+
+            $scope.listAllDriver.available=[];
+            for(var idx=0;idx<respone.records.length;idx++)
+            {
+                //if(respone.records[idx].status=="1")
+                    $scope.listAllDriver.available.push(respone.records[idx]);
+                    
+            }
+        })
+        .error(function () 
+        {
+            console.log('Unable to get Driver' );
+        });
+    };
+
+    $scope.getOrderList = function(){
+        $http({method: 'POST',url:'http://'+$location.$$host+'/controlpanel/getposLajuUnsuccessful.php', data:{'data':''},  
+            headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},}).success(function (respone, status, headers, config) 
+        {
+            respone = CRYPTO.decrypt(respone.data);
+            console.log(respone);
+            $scope.info.total = respone.total;
+            for(var i=0, length=respone.records.length;i<length;i++){
+                for ( var temp in respone.records[i] )
+                {
+                        respone.records[i][temp] = decodeURIComponent(respone.records[i][temp]);
+                }
+                var arr = respone.records[i].timestamp.split(", ");
+                
+                var time = arr[1].split(":");
+                respone.records[i].pickup_time = time[0]+":"+time[1];
+                
+                var date = arr[0].split(" "); 
+                var month = "";
+                switch(date[1].toLowerCase()){
+                    case "jan": month="1";break;
+                    case "feb": month="2";break;
+                    case "mar": month="3";break;
+                    case "apr": month="4";break;
+                    case "may": month="5";break;
+                    case "jun": month="6";break;
+                    case "jul": month="7";break;
+                    case "aug": month="8";break;
+                    case "sep": month="9";break;
+                    case "oct": month="10";break;
+                    case "nov": month="11";break;
+                    case "dec": month="12";break;
+                }
+/*
+                if( respone.records[i].timeout=='Y' )
+                {
+                    respone.records[i].status='Timeout';
+                }
+*/
+                respone.records[i].pickup_date = date[2]+"/"+month+"/"+date[0];
+                
+            }
+            $scope.orders = respone.records;
+            $scope.gridOptions.data = respone.records;
+            // $scope.id = respone.records.zoomorderid;
+            
+        }).error(function (respone, status, headers, config){
+            console.log('error on get zoomer reject')
+        });
+    };
+    
+    $scope.cancelAll = function(){
+        console.log($scope.orders);
+        // console.log(data.zoomorderid);
+        if(confirm('Are you sure want to cancel All') ==true ) {
+
+            var pass = prompt("Insert Password To Cancel This","");
+
+            if ( pass == "zoomitnow3368" ) {
+
+                $scope.data = $scope.orders;
+                console.log($scope.data);
+             $http.get('http://18.141.18.7/controlpanel/updatePosLaju.php?data='+$scope.data)      
+        .success(function(response) 
+        { 
+            
+            console.log(response);
+            $scope.info.onloading = false;     
+            $scope.getOrderList();        
+            for(var i=0; i< respose.result.length;i++){
+                
+            }
+        $scope.gridOptions.data = response.result; 
+        })
+        .error(function () 
+        {
+            $scope.info.onloading = false;
+            alert('Unable to get data ' );
+        }); 
+
+            } else {
+                alert("Password Not Found");
+            }
+           
+     } else {
+        return false; 
+    }
+   }
+
+
+    $scope.edit = function(data) {    
+        if(confirm('Are you sure want to cancel? ? [' + data.zoomorderid + ']?') ==true ) {
+
+            var pass = prompt("Insert Password To Cancel This","");
+
+            if ( pass == "zoomitnow3368" ) {
+
+                 $scope.data = data.zoomorderid;
+             $http.get('http://18.141.18.7/controlpanel/updatePosLajuUnsuccessful.php?data='+$scope.data)      
+        .success(function(response) 
+        { 
+            
+            console.log(response);
+            $scope.info.onloading = false;     
+            $scope.getOrderList();        
+            for(var i=0; i< respose.result.length;i++){
+                
+            }
+        $scope.gridOptions.data = response.result; 
+        })
+        .error(function () 
+        {
+            $scope.info.onloading = false;
+            alert('Unable to get data ' );
+        }); 
+
+            } else {
+                alert("Password Not Found");
+            }
+           
+     } else {
+        return false; 
+    }
+} 
+
+ // $scope.cancelAll = function(data) {
+
+
+
+ // }
+    
+    /*----------*//*-----INITIAL-----*//*----------*/
+    // $scope.getHeight = function(pembagi){
+    //     var height = $scope.screen.height - 160;
+    //     if(height < 150) height = 150;
+    //     return height; 
+    // }
+    $scope.init = function(){
+        
+        $scope.getOrderList();
+        $scope.getDriver();
+              
+        $rootScope.eventInit.push($interval(function(){
+            $scope.getOrderList();
+            $scope.getDriver();
+        },15000));
+    };
+    $scope.getOrderList();
+    $scope.init();
+}]);
+

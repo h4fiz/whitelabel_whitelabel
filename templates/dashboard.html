@@ -1,0 +1,111 @@
+<div class="content">
+    <div class="title">Dashboard &nbsp;<!--<span class="subtitle">Know more about Us</span>--></div>
+    <div class="col-xs-12 col-sm-12 paddingleftright-0 styleCenter">
+        <div class="col-xs-12 col-sm-4 paddingleft-0">
+            <div class="widthfull blue-container">
+                <div class="header">Delivery Agent ONLINE</div>
+                <div class="body">
+                    <div id="gridZoomerOnline" ui-grid="gridZoomerOnlineOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':getGridHeight(2)+'px'}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 paddingleft-0" >
+            <div class="widthfull lightblue-container">
+                <div class="header">Delivery Agent ON ROAD</div>
+                <div class="body">
+                    <div id="gridZoomerOnRoad" ui-grid="gridZoomerOnRoadOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':getGridHeight(2)+'px'}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 paddingleft-0" >
+            <div class="widthfull blue-container">
+                <div class="header">Delivery Agent DAILY TASK</div>
+                <div class="body">
+                    <div id="gridZoomerDailyTask" ui-grid="gridZoomerDailyTaskOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':getGridHeight(2)+'px'}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 paddingleft-0">
+            <div class="widthfull black-container">
+                <div class="header">Delivery Agent OFFLINE</div>
+                <div class="body">
+                    <div id="gridZoomerOffline" ui-grid="gridZoomerOfflineOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':getGridHeight(2)+'px'}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 paddingleft-0" >
+            <div class="widthfull black-container">
+                <div class="header">Delivery Agent MISS TASK</div>
+                <div class="body">
+                    <div id="gridZoomerMissTask" ui-grid="gridZoomerMissTaskOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':getGridHeight(2)+'px'}"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-4 paddingleft-0" >
+            <div class="widthfull black-container">
+                <div class="header">Delivery Agent REJECT TASK</div>
+                <div class="body">
+                    <div id="gridZoomerRejectTask" ui-grid="gridZoomerRejectTaskOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':getGridHeight(2)+'px'}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--  <div class="col-xs-12 col-sm-2 paddingleftright-0">
+        <div class="widthfull blue-container">
+            <div class="header">DAILY C.O.D</div>
+            <div class="body">
+                <div id="gridDailyCod" ui-grid="gridDailyCodOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning ng-style="{'height':getGridHeight(1)+'px'}"></div>
+            </div>
+        </div>
+    </div> -->
+</div>
+<script type="text/ng-template" id="DashboardReassignModal.html">
+    <div class="modal-header">
+        <h3 class="modal-title">Reassign This Order</h3>
+    </div>
+    <div class="modal-body">
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="pickupAddress" class="col-sm-2 control-label">Pickup Address</label>
+                    <div class="col-sm-10">
+                        {{order.pickup_address}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pickupDetail" class="col-sm-2 control-label">Pickup Detail</label>
+                    <div class="col-sm-10">
+                        {{order.pickup_detail}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pickupName" class="col-sm-2 control-label">Pickup Name</label>
+                    <div class="col-sm-10">
+                        {{order.pickup_name}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="pickupPhone" class="col-sm-2 control-label">Pickup Phone</label>
+                    <div class="col-sm-10">
+                        {{order.pickup_phone}}
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div id="gridDetailOrders" ui-grid="gridDetailOrdersOptions" class="grid" ui-grid-resize-columns ui-grid-auto-resize ui-grid-pinning style="height:250px;"></div>
+        <div>
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="pickupAddress" class="col-sm-2 control-label">Assign To</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" ng-options="item as item.driverid for item in drivers track by item.n_id" ng-model="input.reassignTo"></select>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="ok()">Reassign</button>
+        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
